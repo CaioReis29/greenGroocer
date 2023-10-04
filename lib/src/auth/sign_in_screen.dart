@@ -6,7 +6,6 @@ class SignInScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       backgroundColor: Colors.green,
       body: Column(
@@ -24,20 +23,53 @@ class SignInScreen extends StatelessWidget {
                   top: Radius.circular(45),
                 ),
               ),
-              child: const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 32, vertical: 40),
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 32, vertical: 40),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    CustomTextField(
+                    const CustomTextField(
                       prefix: Icons.email,
                       label: 'E-mail',
                       isSecret: false,
                     ),
-                    CustomTextField(
+                    const CustomTextField(
                       prefix: Icons.lock,
                       label: 'Senha',
                       sufix: Icons.visibility,
                       isSecret: true,
+                    ),
+                    SizedBox(
+                      height: 50,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.green,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18),
+                          ),
+                        ),
+                        onPressed: () {},
+                        child: const Text(
+                          'Entrar',
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: TextButton(
+                        onPressed: () {},
+                        child: const Text(
+                          "Esqueceu a senha?",
+                          style: TextStyle(
+                            color: Colors.red,
+                          ),
+                        ),
+                      ),
                     ),
                   ],
                 ),
