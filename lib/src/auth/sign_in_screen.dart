@@ -1,6 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:greengrocer/src/auth/components/custom_text_field.dart';
+import 'package:greengrocer/src/auth/sign_up_screen.dart';
 import 'package:greengrocer/src/config/custom_colors.dart';
 
 class SignInScreen extends StatelessWidget {
@@ -34,7 +35,8 @@ class SignInScreen extends StatelessWidget {
                         TextSpan(
                           text: "Groocer",
                           style: TextStyle(
-                              color: CustomColors.customConstrastColor, fontWeight: FontWeight.bold),
+                              color: CustomColors.customConstrastColor,
+                              fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),
@@ -43,19 +45,18 @@ class SignInScreen extends StatelessWidget {
                     height: 30,
                     child: DefaultTextStyle(
                       style: const TextStyle(
-                        fontSize: 25,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold
-                      ),
+                          fontSize: 25,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold),
                       child: AnimatedTextKit(
-                        repeatForever: true,
-                        pause: Duration.zero,
-                        animatedTexts: [
-                        FadeAnimatedText("Fruits"),
-                        FadeAnimatedText("Vegetables"),
-                        FadeAnimatedText("Meat"),
-                        FadeAnimatedText("Cereals"),
-                      ]),
+                          repeatForever: true,
+                          pause: Duration.zero,
+                          animatedTexts: [
+                            FadeAnimatedText("Fruits"),
+                            FadeAnimatedText("Vegetables"),
+                            FadeAnimatedText("Meat"),
+                            FadeAnimatedText("Cereals"),
+                          ]),
                     ),
                   ),
                 ],
@@ -68,7 +69,8 @@ class SignInScreen extends StatelessWidget {
                   ),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 30),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 32, vertical: 30),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
@@ -138,9 +140,14 @@ class SignInScreen extends StatelessWidget {
                       SizedBox(
                         height: 50,
                         child: OutlinedButton(
-                          onPressed: () {},
+                          onPressed: () => Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (c) => SignUpScreen(),
+                            ),
+                          ),
                           style: OutlinedButton.styleFrom(
-                            side: const BorderSide(width: 2, color: Colors.green),
+                            side:
+                                const BorderSide(width: 2, color: Colors.green),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(18),
                             ),
