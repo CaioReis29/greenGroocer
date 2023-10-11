@@ -9,11 +9,13 @@ class QuantityWidget extends StatelessWidget {
     required this.value,
     required this.suffixText,
     required this.result,
+    this.isRemovable = false,
   }) : super(key: key);
 
   final int value;
   final String suffixText;
   final Function(int quantity) result;
+  final bool isRemovable;
 
   @override
   Widget build(BuildContext context) {
@@ -30,12 +32,13 @@ class QuantityWidget extends StatelessWidget {
         ],
       ),
       child: Row(
+        mainAxisSize: MainAxisSize.min,
         children: [
           _QuantityButton(
-            Colors.grey,
-            Icons.remove,
+            !isRemovable || value > 1 ?Colors.grey : Colors.red,
+            !isRemovable || value > 1 ? Icons.remove : Icons.delete_forever,
             () {
-              if (value == 1) return;
+              (value == 1 && isRemovable);
               int resultCount = value - 1;
               result(resultCount);
             },
