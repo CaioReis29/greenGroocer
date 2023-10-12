@@ -90,6 +90,7 @@ class _CartTabState extends State<CartTab> {
                   height: 50,
                   child: ElevatedButton(
                     onPressed: () async {
+                      // ignore: unused_local_variable
                       bool? result = await showOrderConfirmation();
                     },
                     style: ElevatedButton.styleFrom(
