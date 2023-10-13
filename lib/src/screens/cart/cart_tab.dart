@@ -5,6 +5,8 @@ import 'package:greengrocer/src/screens/cart/components/cart_tile.dart';
 import 'package:greengrocer/src/services/utils_services.dart';
 import 'package:greengrocer/src/config/app_data.dart' as app_data;
 
+import '../common/_payment_dialog.dart';
+
 class CartTab extends StatefulWidget {
   const CartTab({super.key});
 
@@ -128,7 +130,13 @@ class _CartTabState extends State<CartTab> {
             child: const Text("Não"),
           ),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).pop();
+              showDialog(
+                context: context,
+                builder: (c) => PaymentDialog(order: app_data.orders.first),
+              );
+            },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.green,
             ),
