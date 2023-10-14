@@ -17,12 +17,13 @@ class CategoryTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onPressed,
-      child: Align(
-        alignment: Alignment.center,
+    return Align(
+      alignment: Alignment.center,
+      child: InkWell(
+        onTap: onPressed,
+        borderRadius: BorderRadius.circular(20),
         child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 6),
+          padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 3),
           decoration: BoxDecoration(
             color: isSelected ? CustomColors.customSwatchColor : Colors.transparent,
             borderRadius: BorderRadiusDirectional.circular(10),
