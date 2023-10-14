@@ -1,6 +1,7 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:greengrocer/src/config/custom_colors.dart';
 
+import 'package:greengrocer/src/config/custom_colors.dart';
 import 'package:greengrocer/src/models/item_model.dart';
 import 'package:greengrocer/src/screens/product/product_screen.dart';
 import 'package:greengrocer/src/services/utils_services.dart';
@@ -8,8 +9,13 @@ import 'package:greengrocer/src/services/utils_services.dart';
 class ItemTitle extends StatelessWidget {
   ItemTitle({
     Key? key,
+    required this.runAddToCartAnimation,
     required this.item,
   }) : super(key: key);
+
+  final Function(GlobalKey) runAddToCartAnimation;
+
+  final GlobalKey imageGk = GlobalKey();
 
   final ItemModel item;
 
@@ -41,8 +47,11 @@ class ItemTitle extends StatelessWidget {
                   Expanded(
                     child: Hero(
                       tag: item.imageUrl,
-                      child: Image.asset(
-                        item.imageUrl,
+                      child: Container(
+                        key: imageGk,
+                        child: Image.asset(
+                          item.imageUrl,
+                        ),
                       ),
                     ),
                   ),
@@ -80,7 +89,7 @@ class ItemTitle extends StatelessWidget {
           top: 4,
           right: 4,
           child: GestureDetector(
-            onTap: () {},
+            onTap: () => runAddToCartAnimation(imageGk),
             child: Container(
               height: 40,
               width: 35,
