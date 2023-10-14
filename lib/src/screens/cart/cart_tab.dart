@@ -104,8 +104,6 @@ class _CartTabState extends State<CartTab> {
                           builder: (c) =>
                               PaymentDialog(order: app_data.orders.first),
                         );
-                      }else {
-                        utilsServices.showToast(message: "Pedido não concluído", isError: true);
                       }
                     },
                     style: ElevatedButton.styleFrom(
@@ -139,7 +137,10 @@ class _CartTabState extends State<CartTab> {
         content: const Text("Deseja realmente concluir esse pedido?"),
         actions: [
           TextButton(
-            onPressed: () => Navigator.of(context).pop(false),
+            onPressed: () {
+              Navigator.of(context).pop(false);
+              utilsServices.showToast(message: "Pedido não concluído", isError: true);
+            },
             child: const Text("Não"),
           ),
           ElevatedButton(
