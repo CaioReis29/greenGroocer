@@ -17,9 +17,13 @@ class CartTab extends StatefulWidget {
 class _CartTabState extends State<CartTab> {
   final UtilsServices utilsServices = UtilsServices();
 
-  void removeItemFromCart(CartItemModel cartItem) => setState(
-        () => app_data.cartItem.remove(cartItem),
-      );
+  void removeItemFromCart(CartItemModel cartItem) {
+    setState(
+      () => app_data.cartItem.remove(cartItem),
+    );
+    utilsServices.showToast(
+        message: "${cartItem.item.itemName} removido(a) do carrinho");
+  }
 
   double cartTotalPrice() {
     double total = 0;
@@ -92,8 +96,17 @@ class _CartTabState extends State<CartTab> {
                   height: 50,
                   child: ElevatedButton(
                     onPressed: () async {
-                      // ignore: unused_local_variable
                       bool? result = await showOrderConfirmation();
+                      if (result ?? false) {
+                        // ignore: use_build_context_synchronously
+                        showDialog(
+                          context: context,
+                          builder: (c) =>
+                              PaymentDialog(order: app_data.orders.first),
+                        );
+                      }else {
+                        utilsServices.showToast(message: "Pedido não concluído", isError: true);
+                      }
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: CustomColors.customSwatchColor,

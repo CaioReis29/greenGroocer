@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:greengrocer/src/config/custom_colors.dart';
 import 'package:badges/badges.dart' as badges;
 import 'package:greengrocer/src/screens/home/components/item_title.dart';
+import 'package:greengrocer/src/services/utils_services.dart';
 import 'components/category_title.dart';
 import '../../config/app_data.dart' as app_data;
 
@@ -15,6 +16,8 @@ class HomeTab extends StatefulWidget {
 
 class _HomeTabState extends State<HomeTab> {
   String selected = "Frutas";
+
+  final UtilsServices utilsServices = UtilsServices();
 
   GlobalKey<CartIconKey> cartKey = GlobalKey<CartIconKey>();
 
@@ -35,10 +38,11 @@ class _HomeTabState extends State<HomeTab> {
             style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
             children: [
               TextSpan(
-                  text: "Green",
-                  style: TextStyle(
-                    color: CustomColors.customSwatchColor,
-                  )),
+                text: "Green",
+                style: TextStyle(
+                  color: CustomColors.customSwatchColor,
+                ),
+              ),
               TextSpan(
                 text: "groocer",
                 style: TextStyle(
