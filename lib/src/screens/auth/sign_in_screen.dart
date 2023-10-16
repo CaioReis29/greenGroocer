@@ -1,5 +1,6 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:greengrocer/src/screens/common/app_name_widget.dart';
 import 'package:greengrocer/src/screens/common/custom_text_field.dart';
 import 'package:greengrocer/src/screens/auth/sign_up_screen.dart';
 import 'package:greengrocer/src/screens/base/base_screen.dart';
@@ -19,49 +20,31 @@ class SignInScreen extends StatelessWidget {
           child: Column(
             children: [
               Expanded(
-                  child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text.rich(
-                    TextSpan(
-                      style: const TextStyle(
-                        fontSize: 40,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const AppNameWidget(greenTitleColor: Colors.white),
+                    SizedBox(
+                      height: 30,
+                      child: DefaultTextStyle(
+                        style: const TextStyle(
+                            fontSize: 25,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold),
+                        child: AnimatedTextKit(
+                            repeatForever: true,
+                            pause: Duration.zero,
+                            animatedTexts: [
+                              FadeAnimatedText("Fruits"),
+                              FadeAnimatedText("Vegetables"),
+                              FadeAnimatedText("Meat"),
+                              FadeAnimatedText("Cereals"),
+                            ]),
                       ),
-                      children: [
-                        const TextSpan(
-                          text: "Green",
-                          style: TextStyle(
-                              color: Colors.white, fontWeight: FontWeight.bold),
-                        ),
-                        TextSpan(
-                          text: "Groocer",
-                          style: TextStyle(
-                              color: CustomColors.customConstrastColor,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ],
                     ),
-                  ),
-                  SizedBox(
-                    height: 30,
-                    child: DefaultTextStyle(
-                      style: const TextStyle(
-                          fontSize: 25,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold),
-                      child: AnimatedTextKit(
-                          repeatForever: true,
-                          pause: Duration.zero,
-                          animatedTexts: [
-                            FadeAnimatedText("Fruits"),
-                            FadeAnimatedText("Vegetables"),
-                            FadeAnimatedText("Meat"),
-                            FadeAnimatedText("Cereals"),
-                          ]),
-                    ),
-                  ),
-                ],
-              )),
+                  ],
+                ),
+              ),
               Container(
                 decoration: const BoxDecoration(
                   color: Colors.white,
